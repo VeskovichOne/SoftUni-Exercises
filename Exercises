@@ -1,0 +1,38 @@
+using System;
+
+namespace moreExercises
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double budget = double.Parse(Console.ReadLine());
+            int statistCount = int.Parse(Console.ReadLine());
+            double clothesPrice = double.Parse(Console.ReadLine());
+
+            double discount = 0;
+
+            double sumDecor = budget * 0.1;
+            double sumForClothes = statistCount * clothesPrice;
+            if (statistCount > 150)
+            {
+                discount = sumForClothes * 0.1;
+            }
+            double finalSumForClothes = sumForClothes - discount;
+            double finalSumFilm = sumDecor + finalSumForClothes;
+            double result = budget - finalSumFilm;
+            if (budget >=finalSumFilm)
+            {
+                Console.WriteLine("Action!");
+                Console.WriteLine($"Wingard starts filming with {result:f2} leva left.");
+            }
+            else if (finalSumFilm>=budget)
+            {
+                result = Math.Abs(result);
+                Console.WriteLine("Not enough money!");
+                Console.WriteLine($"Wingard needs {result:f2} leva more.");
+            }
+           
+        }   
+    }
+}
